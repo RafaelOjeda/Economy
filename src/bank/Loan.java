@@ -5,10 +5,12 @@ import person.PersonProfile;
 public class Loan {
     private double loanAmount;
     private double interest;
+    private PersonProfile person;
 
     public Loan(PersonProfile person, double loanAmount) {
 
         this.loanAmount = loanAmount;
+        this.person = person;
 
         interest = loanAmount * 1.08;
     }
@@ -42,7 +44,7 @@ public class Loan {
 
     public void loanInfo() {
         System.out.println("----------=Loan Info=----------");
-        System.out.println("Name: ");
+        System.out.printf("Name: %s\n", person.getFirstName());
         System.out.printf("Loan to Pay: $%.2f\n", loanAmount);
         System.out.printf("Loan After Interest: $%.2f\n", interest);
         System.out.println("===============================");

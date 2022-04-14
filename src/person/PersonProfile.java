@@ -1,5 +1,8 @@
 package person;
 
+import bank.BankAccount;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 public class PersonProfile {
@@ -7,6 +10,8 @@ public class PersonProfile {
     private String lastName;
     private String birthDate;
     private int socialSecurity;
+
+    private ArrayList<BankAccount> bankAccounts = new ArrayList<>();
 
     public PersonProfile() {
         firstName = "None";
@@ -63,5 +68,9 @@ public class PersonProfile {
 
     public int getSocialSecurity() {
         return socialSecurity;
+    }
+
+    public ArrayList<BankAccount> getBankAccounts() {
+        return bankAccounts;
     }
 }

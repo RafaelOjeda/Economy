@@ -1,4 +1,5 @@
 package bank;
+import java.util.ArrayList;
 import java.util.Random;
 import person.PersonProfile;
 public class BankAccount {
@@ -7,6 +8,11 @@ public class BankAccount {
     private double checkingsBalance;
     private double savingsBalance;
     private String bankAccountNum;
+
+    private String[] alphabet = {"A", "B", "C", "D", "E", "F", "G",
+                                 "H", "I", "J", "K", "L", "M", "N",
+                                 "O", "P", "Q", "R", "S", "T", "U",
+                                 "V", "W", "X", "Y", "Z"};
 
     public BankAccount () {
         bankAccountHolder = "None";
@@ -26,10 +32,12 @@ public class BankAccount {
     }
 
     private void createBankAccountNumber() {
-        Random accountNumberRandom = new Random();
+        Random rndGen = new Random();
 
-        int accountNumGen = accountNumberRandom.nextInt(0,999999999);
-        bankAccountNum = "U" + accountNumGen;
+
+
+        int accountNumGen = rndGen.nextInt(0,999999999);
+        bankAccountNum = alphabet[rndGen.nextInt(alphabet.length)] + accountNumGen;
     }
 
     public String getBankAccountNumber() {

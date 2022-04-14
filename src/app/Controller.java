@@ -15,5 +15,7 @@ public class Controller {
 
         Loan schoolLoan = new Loan(reom, 10);
         schoolLoan.loanInfo();
+
+        reom.getBankAccounts().add(reomBankAccount);
     }
 }
