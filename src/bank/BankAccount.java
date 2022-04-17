@@ -29,6 +29,14 @@ public class BankAccount {
         savingsBalance = 0.00;
 
         createBankAccountNumber();
+
+        System.out.printf("%s, %s", bankAccountHolder.getLastName(), bankAccountHolder.getFirstName(), " " +
+                "your bank account was created successfully. Here is your account number: %d\n\n", getBankAccountNumber());
+
+        System.out.printf("Your checkings balance is: %f", checkingsBalance);
+        System.out.printf("Your savings balance is: %f", savingsBalance);
+
+
     }
 
     private void createBankAccountNumber() {
@@ -43,4 +51,13 @@ public class BankAccount {
     public String getBankAccountNumber() {
         return bankAccountNum;
     }
+
+    public double getCheckingsBalance() {
+        return checkingsBalance;
+    }
+
+    public double getSavingsBalance() {
+        return savingsBalance;
+    }
 }
+

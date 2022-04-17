@@ -1,13 +1,13 @@
 package bank;
 
 import person.PersonProfile;
-
+import bank.BankAccount;
 public class Loan {
     private double loanAmount;
     private double interest;
     private PersonProfile person;
 
-    public Loan(PersonProfile person, double loanAmount) {
+    public Loan(PersonProfile person, BankAccount accountName, double loanAmount) {
 
         this.loanAmount = loanAmount;
         this.person = person;

@@ -73,4 +73,20 @@ public class PersonProfile {
     public ArrayList<BankAccount> getBankAccounts() {
         return bankAccounts;
     }
+
+    public void setBankAccounts(Boolean addRemove, BankAccount aBankAccount) {
+        if (addRemove) { // True means add a bank account to the ArrayList
+            if (bankAccounts.contains(aBankAccount)) {
+                System.out.println("Bank account already in wallet.");
+            } else {
+                bankAccounts.add(aBankAccount);
+            }
+        } else {
+            if (!bankAccounts.contains(aBankAccount)) {
+                System.out.println("Bank Account not in the wallet of " + firstName);
+            } else {
+                bankAccounts.remove(aBankAccount);
+            }
+        }
+    }
 }
