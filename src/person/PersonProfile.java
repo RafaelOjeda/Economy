@@ -3,6 +3,7 @@ package person;
 import bank.BankAccount;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 public class PersonProfile {
@@ -11,30 +12,44 @@ public class PersonProfile {
     private String birthDate;
     private int socialSecurity;
 
+    public static HashMap<String, PersonProfile> peopleProfiles = new HashMap<>();
     private ArrayList<BankAccount> bankAccounts = new ArrayList<>();
+
+    /*
+     * Make it so it adds a random 4 digit number on the name as part of an ID in the key of the HashMap.
+     * IE: Rafael#2121
+     */
 
     public PersonProfile() {
         firstName = "None";
         lastName = "None";
         birthDate = "None";
         socialSecurity = -1;
+
+        peopleProfiles.put(this.getFirstName(), this);
     }
 
     public PersonProfile(String firstName) {
         this.firstName = firstName;
         socialSecurityGen();
+
+        peopleProfiles.put(firstName, this);
     }
 
     public PersonProfile(String firstName, String lastName) {
         this(firstName);
         this.lastName = lastName;
         socialSecurityGen();
+
+        peopleProfiles.put(firstName, this);
     }
 
     public PersonProfile(String firstName, String lastName, String birthDate) {
         this(firstName, lastName);
         this.birthDate = birthDate;
         socialSecurityGen();
+
+        peopleProfiles.put(firstName, this);
     }
 
     public String getFirstName() {
@@ -43,6 +58,8 @@ public class PersonProfile {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+
+        peopleProfiles.put(firstName, this);
     }
 
     public String getLastName() {
