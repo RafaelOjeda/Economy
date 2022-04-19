@@ -12,13 +12,17 @@ public class PersonProfile {
     private String birthDate;
     private int socialSecurity;
 
+    private int personID;
+
     public static HashMap<String, PersonProfile> peopleProfiles = new HashMap<>();
     private ArrayList<BankAccount> bankAccounts = new ArrayList<>();
 
     /*
-     * Make it so it adds a random 4 digit number on the name as part of an ID in the key of the HashMap.
-     * IE: Rafael#2121
+     *  This Random object is used for generating a Social Security
+     *  and an ID for the PersonProfile.
      */
+    Random rndGen = new Random();
+
 
     public PersonProfile() {
         firstName = "None";
@@ -26,12 +30,16 @@ public class PersonProfile {
         birthDate = "None";
         socialSecurity = -1;
 
-        peopleProfiles.put(this.getFirstName(), this);
+        personID = rndGen.nextInt(1000, 9999);
+
+        peopleProfiles.put(this.getFirstName() + "#" + personID, this);
     }
 
     public PersonProfile(String firstName) {
         this.firstName = firstName;
         socialSecurityGen();
+
+        personID = rndGen.nextInt(1000, 9999);
 
         peopleProfiles.put(firstName, this);
     }
@@ -41,6 +49,8 @@ public class PersonProfile {
         this.lastName = lastName;
         socialSecurityGen();
 
+        personID = rndGen.nextInt(1000, 9999);
+
         peopleProfiles.put(firstName, this);
     }
 
@@ -48,6 +58,8 @@ public class PersonProfile {
         this(firstName, lastName);
         this.birthDate = birthDate;
         socialSecurityGen();
+
+        personID = rndGen.nextInt(1000, 9999);
 
         peopleProfiles.put(firstName, this);
     }
@@ -79,8 +91,7 @@ public class PersonProfile {
     }
 
     private void socialSecurityGen() {
-        Random socialSecurityRandom = new Random();
-        socialSecurity = socialSecurityRandom.nextInt(0, 999999999);
+        socialSecurity = rndGen.nextInt(0, 999999999);
     }
 
     public int getSocialSecurity() {
@@ -89,6 +100,10 @@ public class PersonProfile {
 
     public ArrayList<BankAccount> getBankAccounts() {
         return bankAccounts;
+    }
+
+    public int getPersonID() {
+        return personID;
     }
 
     public void setBankAccounts(Boolean addRemove, BankAccount aBankAccount) {

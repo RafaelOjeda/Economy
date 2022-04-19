@@ -15,7 +15,7 @@ public class Controller {
         System.out.println(reom.getFirstName() + " " + reom.getLastName() + " " + reom.getBirthDate()
                 + " " + reomBankAccount.getBankAccountNumber());
 
-        Loan schoolLoan = new Loan(reom, 10);
+        Loan schoolLoan = new Loan(reom, reomBankAccount, 10);
         schoolLoan.loanInfo();
 
         reom.getBankAccounts().add(reomBankAccount);
