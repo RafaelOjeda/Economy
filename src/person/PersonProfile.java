@@ -24,6 +24,7 @@ public class PersonProfile {
     Random rndGen = new Random();
 
 
+
     public PersonProfile() {
         firstName = "None";
         lastName = "None";
@@ -104,6 +105,16 @@ public class PersonProfile {
 
     public int getPersonID() {
         return personID;
+    }
+
+    public void displayInfo() {
+        System.out.println("-------------------------------------------");
+        System.out.println("#" + personID + " " + firstName + " " + lastName + "'s \tProfile");
+        System.out.println("-------------------------------------------");
+        System.out.printf("Full Name: %s %s", firstName, lastName);
+        System.out.println();
+        System.out.println("DOB: " + birthDate);
+        System.out.println("Social Security: " + socialSecurity);
     }
 
     public void setBankAccounts(Boolean addRemove, BankAccount aBankAccount) {

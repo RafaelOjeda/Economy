@@ -44,7 +44,7 @@ public class BankAccount {
 
 
 
-        int accountNumGen = rndGen.nextInt(0,999999999);
+        int accountNumGen = rndGen.nextInt(100000000,999999999);
         bankAccountNum = alphabet[rndGen.nextInt(alphabet.length)] + accountNumGen;
     }
 

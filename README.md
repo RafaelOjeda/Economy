@@ -1,4 +1,4 @@
-###Economy
+<h1>Economy</h1>
 <ul>
     <h6>TODO:</h6>
     <li>Make it so all information is kept in a .TXT file.</li>
