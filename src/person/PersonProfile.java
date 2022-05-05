@@ -24,7 +24,6 @@ public class PersonProfile {
     Random rndGen = new Random();
 
 
-
     public PersonProfile() {
         firstName = "None";
         lastName = "None";

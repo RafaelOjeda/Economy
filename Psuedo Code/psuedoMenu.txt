@@ -1,0 +1,35 @@
+Published by: Rafael Ojeda
+Description:
+    Fully functioning menu. Displays menu depending on what role and user.
+    Can create all objects and retrieve all types of information.
+
+Location: Controller.java
+
+
+public void startMenu() {
+	do {
+		Asks are you a manager?
+			Type in password if you are a manager. Other wise type '0'
+		
+		If user is manager output this menu:
+			1: View all PersonProfile accounts.
+			2: View all BankAccounts.
+			3: View total economy.
+			4: View average Credit Score
+			5: View average balance in checkings and savings
+			Show wealthiest person.
+			
+		otherwise user is not a manager:
+			1: ask for the username of the user ie: Raf#3210
+				1: View PersonProfile
+				2: Shows user BankAccounts.
+					1: withdraw
+					2: deposit
+					3: send money to another person
+				3: View Credit Score
+				4: Get a loan
+	
+	
+
+	}	while (user does not input stop)
+}
