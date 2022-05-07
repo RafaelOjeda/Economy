@@ -3,16 +3,16 @@ package app;
 import bank.*;
 import person.PersonProfile;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.BufferedWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Controller {
 
     public static void main(String[] args) throws IOException{
+
         startMenu();
 
 //        PersonProfile reom = new PersonProfile("REOM", "Ojeda", "12/11/1999");
@@ -62,18 +62,19 @@ public class Controller {
 
                 } while (!existingUserQuestion.equals("1") && !existingUserQuestion.equals("0"));
 
+                // They are not an existing user create a new user object and store it on the .TXT
                 if (existingUserQuestion.equals("0")) {
-                    // They are not an existing user create a new user object and store it on the .TXT
+
 
                     System.out.print("Enter your first name: ");
-                    String firstNamePP = scanner.nextLine();
+                    String firstNamePP = scanner.nextLine().toLowerCase();
                     System.out.println();
 
                     System.out.print("Enter your last name: ");
-                    String lastNamePP = scanner.nextLine();
+                    String lastNamePP = scanner.nextLine().toLowerCase();
 
                     System.out.print("Enter your birth day (MM/DD/YYYY): ");
-                    String birthdatePP = scanner.nextLine();
+                    String birthdatePP = scanner.nextLine().toLowerCase();
 
                     PersonProfile personProfile = new PersonProfile(firstNamePP, lastNamePP, birthdatePP);
 
@@ -94,7 +95,46 @@ public class Controller {
                     writer.write(firstNamePP + "#" + personProfile.getPersonID() + "," + lastNamePP + "," + birthdatePP + "," + personProfile.getSocialSecurity());
 
                     writer.close();
+
+                    // ENDS CREATION OF USER MENU OPTION
                 } else { // They are an existing user ask them for their username.
+
+                    System.out.println("What is your userID? (User#0000)");
+
+                    String userIDInput = scanner.nextLine();
+
+                    try {
+                        userIDInput.replaceAll(" ", ""); // Removes any unnecessary spaces.
+
+                        final String fileLocation = "./Data/userProfiles.txt";
+
+                        BufferedReader br = new BufferedReader(new FileReader(fileLocation));
+
+                        String currentLine;
+
+                        while ((currentLine = br.readLine()) != null) {
+
+                            String[] tokens = currentLine.split(",");
+
+                            if (tokens[0].equals(userIDInput.toLowerCase())) {
+                                System.out.println("User found welcome. " + tokens[0]);
+                            }
+
+                        }
+                    } catch (IOException e) {
+
+                        e.printStackTrace();
+
+                    }
+
+
+                    /*
+                     * If they are an existing user ask them for their userID. ie "Raf#0000"
+                     * Within do-while create a for loop through all lines within the .TXT file and look for the id.
+                     * If the user is found exit do-while loop. Else ask again.
+                     *
+                     * When found display that users information in full.
+                     */
 
                 }
 
