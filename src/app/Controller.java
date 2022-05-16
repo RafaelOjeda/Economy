@@ -1,55 +1,71 @@
 package app;
 
-import bank.*;
 import person.PersonProfile;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Locale;
+import javax.swing.*;
+import java.awt.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.FileReader;
+import java.io.IOException;
+import java.awt.event.*;
+
 import java.util.Scanner;
 
 public class Controller {
 
-    public static void main(String[] args) throws IOException{
-
+    public static void main(String[] args) throws IOException {
+        
+        managerQuestion();
         startMenu();
 
-//        PersonProfile reom = new PersonProfile("REOM", "Ojeda", "12/11/1999");
+    }
+    public static String managerQuestion() {
+
+//        JFrame managerPanel = new JFrame();
+//        JButton managerButton = new JButton("Yes, I am a manager.");
+//        JButton guestButton = new JButton("No, I am a guest.");
 //
-//        BankAccount reomBankAccount = new BankAccount();
+//        managerButton.setBounds(100,100,100,100);
+//        managerPanel.add(managerButton);
 //
-//        System.out.println(reom.getFirstName() + " " + reom.getLastName() + " " + reom.getBirthDate()
-//                + " " + reomBankAccount.getBankAccountNumber());
-//
-//        Loan schoolLoan = new Loan(reom, reomBankAccount, 10);
-//        schoolLoan.loanInfo();
-//
-//        reom.getBankAccounts().add(reomBankAccount);
+//        guestButton.setBounds(100,300,100,100);
+//        managerPanel.add(guestButton);
+//        managerPanel.setSize(1000,1000);
+//        managerPanel.setLayout(null);
+//        managerPanel.setVisible(true);
+
+        Scanner scanner = new Scanner(System.in);
+
+        String managerQuestion;
+        do {
+            System.out.println("Type 'Q' at any time to quit menu.");
+            System.out.println("Are you a manager?");
+            System.out.print("'1' for yes '0' for no >> ");
+            managerQuestion = scanner.nextLine();
+        } while (!managerQuestion.equals("1") && !managerQuestion.equals("0") && !managerQuestion.equalsIgnoreCase("Q"));
+
+        return managerQuestion;
     }
 
-    public static void startMenu() throws IOException{
+    public static void startMenu() throws IOException {
+
         final String userProfilesFile = "Data/userProfiles.txt";
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(userProfilesFile, true));
 
         Scanner scanner = new Scanner(System.in);
-        // Make it so program runs through Terminal inputs.
-        do {
-            // PP = PersonProfile
-            String managerQuestion;
-            do {
-                System.out.println("Type 'Q' at any time to quit menu.");
-                System.out.println("Are you a manager?");
-                System.out.print("'1' for yes '0' for no >> ");
-                managerQuestion = scanner.nextLine();
-            } while (!managerQuestion.equals("1") && !managerQuestion.equals("0") && !managerQuestion.equalsIgnoreCase("Q"));
 
-            if (managerQuestion.equals("1")) { // MANAGER MENU
+        do {
+
+            managerQuestion();
+
+            if (managerQuestion().equals("1")) { // MANAGER MENU
                 // managerMenu();
                 System.out.println("HELLO!!!");
 
-            } else if (managerQuestion.equals("0")) { // REGULAR USER MENU
+            } else if (managerQuestion().equals("0")) { // REGULAR USER MENU
                 // userMenu()
                 System.out.println("HELLO");
                 String existingUserQuestion;
@@ -125,7 +141,7 @@ public class Controller {
 
                         e.printStackTrace();
 
-                    }
+                    } // END OF SEARCH OF EXISTING USER.
 
 
                     /*
@@ -138,7 +154,7 @@ public class Controller {
 
                 }
 
-            } else if (managerQuestion.equalsIgnoreCase("Q")) { // QUIT
+            } else if (managerQuestion().equalsIgnoreCase("Q")) { // QUIT
                 return;
 
             }

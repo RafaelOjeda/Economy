@@ -6,6 +6,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * This object creates a Person's profile. Using their first/last name and birthdate.
+ * It also generates a random social security.
+ * The way a profile should be called is with their username that is USERNAME#1010
+ */
+
+// TODO: Make sure HashMap is updated after updating existing PersonProfile.
+
 public class PersonProfile {
     private String firstName;
     private String lastName;
