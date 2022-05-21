@@ -16,25 +16,112 @@ import java.util.Scanner;
 public class Controller {
 
     public static void main(String[] args) throws IOException {
-        
-        managerQuestion();
-        startMenu();
+
+        /*
+         * Skeleton of every out panel.
+         * The mainFrame consists of a CardLayout.
+         * Every direct child panel has a GridBagLayout structure.
+         */
+
+        JFrame mainFrame = new JFrame("Banking System");
+        mainFrame.setLayout(new CardLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+
+
+        // mainMenuCard
+        JPanel mainMenuCard = new JPanel();
+
+        mainMenuCard.setLayout(new GridBagLayout());
+        JLabel welcomeTitleLabel = new JLabel("Welcome to the Global Bank");
+        JButton newUserButton = new JButton("New User");
+        JButton existingUserButton = new JButton("Existing User");
+        JLabel estLabel = new JLabel("Est. 2022");
+
+        gbc.gridy = 1;
+        gbc.gridx = 1;
+        gbc.gridheight = 1;
+        gbc.gridwidth = 5;
+        welcomeTitleLabel.setFont(new Font("Serif", Font.BOLD, 40));
+        mainMenuCard.add(welcomeTitleLabel, gbc);
+
+        gbc.gridy = 2;
+        gbc.gridx = 1;
+        gbc.gridheight = 1;
+        gbc.gridwidth = 2;
+        mainMenuCard.add(newUserButton, gbc);
+
+        gbc.gridy = 2;
+        gbc.gridx = 3;
+        gbc.gridheight = 1;
+        gbc.gridwidth = 2;
+        mainMenuCard.add(existingUserButton, gbc);
+
+        gbc.gridy = 3;
+        gbc.gridx = 1;
+        gbc.gridheight = 2;
+        gbc.gridwidth = 5;
+        mainMenuCard.add(estLabel, gbc);
+
+        mainFrame.add(mainMenuCard);
+        mainMenuCard.setVisible(true);
+        //End of mainMenuCard
+
+        // newUserCard
+        JPanel newUserCard = new JPanel();
+
+        newUserCard.setLayout(new GridBagLayout());
+
+        mainFrame.add(newUserCard);
+        // End of newUserCard
+
+        // existingUserCard
+        JPanel existingUserCard = new JPanel();
+
+        existingUserCard.setLayout(new GridBagLayout());
+
+        mainFrame.add(existingUserCard);
+        // end of existingUserCard
+
+
+        mainFrame.setSize(new Dimension(650,350));
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JPanel welcomePanel = new JPanel(new GridBagLayout());
+        mainFrame.add(welcomePanel);
+
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+
+        JLabel welcomeLabel = new JLabel("Are you a guest or a manager?");
+        JButton guestButton = new JButton("Guest");
+        JButton managerButton = new JButton("Manager");
+
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.gridheight = 1;
+        gbc.gridwidth = 2;
+        welcomePanel.add(welcomeLabel, gbc);
+        welcomeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 1;
+        welcomePanel.add(guestButton, gbc);
+
+        gbc.gridx = 2;
+        gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 1;
+        welcomePanel.add(managerButton, gbc);
+
+
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setResizable(false);
+        mainFrame.setVisible(true);
+//        managerQuestion();
+//        startMenu();
 
     }
     public static String managerQuestion() {
-
-//        JFrame managerPanel = new JFrame();
-//        JButton managerButton = new JButton("Yes, I am a manager.");
-//        JButton guestButton = new JButton("No, I am a guest.");
-//
-//        managerButton.setBounds(100,100,100,100);
-//        managerPanel.add(managerButton);
-//
-//        guestButton.setBounds(100,300,100,100);
-//        managerPanel.add(guestButton);
-//        managerPanel.setSize(1000,1000);
-//        managerPanel.setLayout(null);
-//        managerPanel.setVisible(true);
 
         Scanner scanner = new Scanner(System.in);
 
